@@ -56,7 +56,7 @@ function computeMinimalCheckout(
 
   const finishMatchesPref = (d: Segment) => opts.preferredDoubles.has(d.code);
 
-  let one = fins.filter((d) => d.value === target).map((d) => ({ darts: [d] }));
+  const one = fins.filter((d) => d.value === target).map((d) => ({ darts: [d] }));
 
   const two: Route[] = [];
   for (const d of fins) {
