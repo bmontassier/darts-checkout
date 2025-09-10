@@ -224,7 +224,6 @@ export default function CheckoutApp() {
 
   useEffect(() => {
     if (score > 170) setScore(170);
-    if (score < 2) setScore(2);
   }, [score]);
 
   const togglePref = (code: string) => {
