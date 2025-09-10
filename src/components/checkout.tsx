@@ -16,23 +16,31 @@ type Segment = {
   type: "S" | "D" | "T" | "BULL" | "DBULL";
 };
 
-const singles: Segment[] = Array.from({ length: 20 }, (_, i) => ({
-  code: `S${i + 1}`,
-  value: i + 1,
-  type: "S" as const,
-})).concat([{ code: "BULL", value: 25, type: "BULL" as const }]);
+const singles: Segment[] = [
+  ...Array.from({ length: 20 }, (_, i): Segment => ({
+    code: `S${i + 1}`,
+    value: i + 1,
+    type: "S" as const,
+  })),
+  { code: "BULL", value: 25, type: "BULL" as const },
+];
 
-const doubles: Segment[] = Array.from({ length: 20 }, (_, i) => ({
-  code: `D${i + 1}`,
-  value: 2 * (i + 1),
-  type: "D" as const,
-})).concat([{ code: "DBULL", value: 50, type: "DBULL" as const }]);
+const doubles: Segment[] = [
+  ...Array.from({ length: 20 }, (_, i): Segment => ({
+    code: `D${i + 1}`,
+    value: 2 * (i + 1),
+    type: "D" as const,
+  })),
+  { code: "DBULL", value: 50, type: "DBULL" as const },
+];
 
-const triples: Segment[] = Array.from({ length: 20 }, (_, i) => ({
-  code: `T${i + 1}`,
-  value: 3 * (i + 1),
-  type: "T" as const,
-}));
+const triples: Segment[] = [
+  ...Array.from({ length: 20 }, (_, i): Segment => ({
+    code: `T${i + 1}`,
+    value: 3 * (i + 1),
+    type: "T" as const,
+  })),
+];
 
 const allSetups: Segment[] = [...singles, ...doubles, ...triples];
 
@@ -56,7 +64,6 @@ function computeMinimalCheckout(
   const fins = doubles;
 
   const finishMatchesPref = (d: Segment) => opts.preferredDoubles.has(d.code);
-
   const one = fins.filter((d) => d.value === target).map((d) => ({ darts: [d] }));
 
   const two: Route[] = [];
