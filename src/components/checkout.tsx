@@ -264,7 +264,7 @@ export default function CheckoutApp() {
                     max={170}
                     className="text-lg bg-slate-800/60 border-slate-700/60 text-white"
                     value={isNaN(score) ? "" : score}
-                    onChange={(e) => setScore(parseInt(e.target.value || "0", 10))}
+                    onChange={(e) => setScore(parseInt(e.target.value, 10))}
                   />
                   <p className="mt-1 text-xs opacity-70">
                     Tapez un score entre 2 et 170 (sortie sur un double obligatoire). Les routes via le Bull sont incluses automatiquement.
